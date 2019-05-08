@@ -37,7 +37,7 @@ const CirclePart: React.FC<CirclePartProps> = props => {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
     >
-      <path d={circlePart} />
+      <path d={circlePart} fill="#1dbf15"/>
     </svg>
   );
 };
