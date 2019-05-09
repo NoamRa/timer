@@ -1,26 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import CirclePart from "./Components/CirclePart";
-
-function useInterval(callback: any, delay: number) {
-  const savedCallback = useRef(() => {});
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
+import useInterval from "./logic/useInterval";
 
 const App: React.FC = () => {
   let [degrees, setDegrees] = useState(1);
