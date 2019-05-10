@@ -8,6 +8,8 @@ interface TimeDisplayProps {
   onChange: () => void;
 }
 
+const padTime = (num: number) => `${num}`.padStart(2, "0");
+
 const TimeDisplay: React.FC<TimeDisplayProps> = (props): JSX.Element => {
   const { now, startTime, timerDuration, showNumericTimer, onChange } = props;
   const passed: number = now - startTime;
@@ -18,9 +20,11 @@ const TimeDisplay: React.FC<TimeDisplayProps> = (props): JSX.Element => {
       <input type="checkbox" checked={showNumericTimer} onChange={onChange} />
       {showNumericTimer && (
         <Fragment>
-          Time Passed - {`${Math.trunc(passed / 60)}:${passed % 60}`}
+          Time Passed -&nbsp;
+          {`${Math.trunc(passed / 60)}:${padTime(passed % 60)}`}
           <br />
-          Time Remaining - {`${Math.trunc(remaining / 60)}:${remaining % 60}`}
+          Time Remaining -&nbsp;
+          {`${Math.trunc(remaining / 60)}:${padTime(remaining % 60)}`}
         </Fragment>
       )}
     </Fragment>
