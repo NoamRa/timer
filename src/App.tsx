@@ -17,6 +17,7 @@ const App: React.FC = (): JSX.Element => {
   let [startTime, setStartTime] = useState(now);
   let degreesPerSecond: number = calcDegreesPerSecond(timerDuration);
   let [degrees, setDegrees] = useState(degreesPerSecond * (startTime - now));
+  let [showNumericTimer, setShowNumericTimer] = useState(false);
 
   const handleTimeChange = (evt: SyntheticEvent): void => {
     const updatedTimerDuration: number =
@@ -55,8 +56,13 @@ const App: React.FC = (): JSX.Element => {
         value={timerDuration / 60}
         onChange={handleTimeChange}
       />
-      {renderTimeDisplay()}
       <CirclePart diameter={500} degrees={degrees} />
+      <input
+        type="checkbox"
+        checked={showNumericTimer}
+        onChange={() => setShowNumericTimer(!showNumericTimer)}
+      />
+      {showNumericTimer && renderTimeDisplay()}
     </div>
   );
 };
