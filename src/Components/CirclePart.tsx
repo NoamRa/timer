@@ -8,7 +8,7 @@ interface CirclePartProps {
 const CirclePart: React.FC<CirclePartProps> = props => {
   const { diameter, degrees } = props;
   const degreesToRadians = (degrees: number): number => (
-    // also rotate by 90 deg counter-clockwise
+    // convert deg to rad and rotate by 90 deg counter-clockwise (0 in on top)
     Math.PI / 180 * (degrees - 90)
   );
   const viewBox: string = [0, 0, diameter, diameter].join(" ");
