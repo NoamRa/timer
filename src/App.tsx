@@ -4,8 +4,9 @@ import CirclePart from "./Components/CirclePart";
 import useInterval from "./logic/useInterval";
 import TimeInput from "./Components/TimeInput";
 import TimeDisplay from "./Components/TimeDisplay";
+import { getDurationQueryParam } from "./logic/utils";
 
-const initialTimerDuration: number = 25 * 60; // in seconds
+const initialTimerDuration: number = (getDurationQueryParam() || 25) * 60; // in seconds
 const initialDegrees: number = 0.01 // will show full circle
 
 const App: React.FC = (): JSX.Element => {
